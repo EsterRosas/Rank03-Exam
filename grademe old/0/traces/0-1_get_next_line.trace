@@ -1,0 +1,31 @@
+get_next_line/get_next_line.c:12:19: error: called object type 'int' is not a function or function pointer
+        while ((rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1) > 0)
+                     ~~~~^
+get_next_line/get_next_line.c:12:10: error: use of undeclared identifier 'rd'
+        while ((rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1) > 0)
+                ^
+get_next_line/get_next_line.c:19:6: error: use of undeclared identifier 'rd'
+        if (rd == -1 || i == 0 || (!rd && !buffer[i - 1]))
+            ^
+get_next_line/get_next_line.c:19:30: error: use of undeclared identifier 'rd'
+        if (rd == -1 || i == 0 || (!rd && !buffer[i - 1]))
+                                    ^
+get_next_line/get_next_line.c:20:24: error: too many arguments to function call, expected 1, have 2
+                return (free(buffer, NULL)
+                        ~~~~         ^~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/sys/_types/_null.h:30:15: note: expanded from macro 'NULL'
+#define NULL  __DARWIN_NULL
+              ^~~~~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/sys/_types.h:52:23: note: expanded from macro '__DARWIN_NULL'
+#define __DARWIN_NULL ((void *)0)
+                      ^~~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/malloc/_malloc.h:42:1: note: 'free' declared here
+void     free(void *);
+^
+5 errors generated.
+
+(null)\n
+\n
+-------
+\n
+-------
