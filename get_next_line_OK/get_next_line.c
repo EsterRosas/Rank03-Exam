@@ -8,7 +8,7 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || !BUFFER_SIZE)
 		return (NULL);
-	while (read(fd, &buff[i], 1) == 1)
+	while (read(fd, &buff[i], BUFFER_SIZE - BUFFER_SIZE + 1) == 1)
 	{
 		if (buff[i] == '\n')
 		{
@@ -28,7 +28,6 @@ char *get_next_line(int fd)
 		res[i] = buff[i];
 		i++;
 	}
-	free(buff);
 	res[i] = '\0';
 	return (res);
 }
