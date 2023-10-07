@@ -28,6 +28,7 @@ char *get_next_line(int fd)
 		res[i] = buff[i];
 		i++;
 	}
+	free(buff);
 	res[i] = '\0';
 	return (res);
 }
