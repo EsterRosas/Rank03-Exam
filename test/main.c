@@ -1,25 +1,20 @@
 #include <stdio.h>
+#include <fcntl.h>
+#include "get_next_line.h"
+#include <unistd.h>
 
-int	has_eol(char *s)
+int	main()
 {
-	int i = 0;
+	int	fd = open("fle.txt", O_RDONLY);
+	char	*line;
 
-	while (s[i] && s[i] != '\n')
-		i++;
-	if (s[i] == '\n')
-		return (1);
-	return (0);
-}
-
-int	main(void)
-{
-	char	*s = "\n";
-	int		val;
-
-	val = has_eol(s);
-	printf("val: %i\n", s, val);
-	
-
-
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		else
+			printf("line: %s\n", line);
+	}
 	return (0);
 }
