@@ -6,7 +6,7 @@
 /*   By: erosas-c <erosas-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 19:33:01 by erosas-c          #+#    #+#             */
-/*   Updated: 2023/10/07 13:19:27 by erosas-c         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:52:03 by erosas-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	j = -1;
 	if (!s1)
 	{
-		s1 = ft_calloc(sizeof (char), 1);
+		s1 = ft_calloc(1, sizeof(char));
 		s1[0] = '\0';
 	}
 	p = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
@@ -90,7 +90,7 @@ char	*upd_stored(char	*p)
 		free(p);
 		return (NULL);
 	}
-	next_stored = ft_calloc(sizeof(char), ft_strlen(p) - i + 1);
+	next_stored = ft_calloc(ft_strlen(p) - i + 1, sizeof(char));
 	if (!next_stored)
 		return (NULL);
 	i++;
@@ -110,7 +110,7 @@ char	*get_line(char *p)
 		return (NULL);
 	while (p[i] && p[i] != '\n')
 		i++;
-	line = ft_calloc(sizeof(char), i + 2);
+	line = ft_calloc(i + 2, sizeof(char));
 	if (!line)
 		return (NULL);
 	i = -1;
@@ -132,7 +132,7 @@ char	*go_read(int fd, char *read_s)
 	char	*buffer;
 
 	bytes_read = 1;
-	buffer = ft_calloc(sizeof(char), BUFFER_SIZE + 1);
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (NULL);
 	while (!ft_strchr(buffer, '\n') && bytes_read > 0)
@@ -155,7 +155,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*stored;
 
-	if (fd < 0)
+	if (fd < 0 || !BUFFER_SIZE)
 		return (NULL);
 	stored = go_read(fd, stored);
 	if (!stored)
